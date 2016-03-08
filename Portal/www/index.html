@@ -47,10 +47,9 @@
         <div class="panel left" data-role="panel" data-position="left" data-display="overlay" id="panel-01">
             <ul>
                 <li class="home"><a href="#" title="Home">Home</a></li>
+                <li class="profile"><a href="#route-page" title="Profile">Search for Route</a></li>
                 <li class="profile"><a href="#shortcut-page" title="Profile">Add Shortcut</a></li>
-                <li class="tasks"><a href="tasks.html" title="Tasks" data-ajax="false">Tasks</a></li>
-                <li class="login" id="l-in"><a href="login.html" title="Login">Log-in or Set-up</a></li>
-                <li class="logout" id="l-out"  style="display:none" ><a href="logout.html" title="Logout">Log-out</a></li>
+                <li class="profile"><a href="#roadblock-page" title="Profile">Add Roadblock</a></li>
             </ul>
         </div>
         <div class="header" data-role="header" data-theme="b">
@@ -61,6 +60,31 @@
         </div>
     </div>
 
+    <!-- search route page -->
+    <div class="wrapper" data-role="page" id="route-page">
+        <div class="header" data-role="header" data-theme="b">
+            <span class="open left"><a href="#index">&#8678;</a></span>
+            <span class="title">Search for Route</span>
+        </div>
+        <div data-role="main" class="ui-content">
+            <form method="post" action="#index">
+                <div class="ui-field-contain">
+                    <input type="search" name="start" id="start" placeholder="Choose Starting Location..">
+                    <input type="search" name="end" id="end" placeholder="Choose Ending Location..">
+                </div>
+                <div class="ui-field-contain">
+                    <label for="food">Food</label>
+                    <input type="checkbox" name="filter" id="food" value="food">
+                    <label for="rain">Rain</label>
+                    <input type="checkbox" name="filter" id="rain" value="rain">
+                    <label for="toilet">Toilet</label>
+                    <input type="checkbox" name="filter" id="toilet" value="toilet">
+                </div>
+                <input type="submit" data-inline="true" value="Submit">
+            </form>
+        </div>
+    </div>
+
     <!-- add shortcut page -->
     <div class="wrapper" data-role="page" id="shortcut-page">
         <div class="header" data-role="header" data-theme="b">
@@ -68,6 +92,7 @@
             <span class="title">Add Shortcut</span>
         </div>
         <div data-role="main" class="ui-content">
+            <!--
             <script type="text/javascript">
     var map;
     document.addEventListener("deviceready", function() {
@@ -89,10 +114,85 @@
       map.showDialog();
     }
     </script>
+    -->
         </div>
         <div class="footer" data-role="footer" data-theme="b" data-position="fixed" data-id="store">
-            <a href="#store" data-role="button" data-icon="shop">Accessory Store</a>
+            <a href="#shortcut-info-page" data-role="button" data-icon="shop">Next</a>
         </div>
     </div>
+
+    <!-- shortcut description page -->
+    <div class="wrapper" data-role="page" id="shortcut-info-page">
+        <div class="header" data-role="header" data-theme="b">
+            <span class="title">Add Shortcut</span>
+        </div>
+        <div data-role="main" class="ui-content">
+            <form method="post" action="#index">
+                <div class="ui-field-contain">
+                    <label for="sname">Name of Shortcut:</label>
+                    <input type="text" name="sname" id="sname">
+                    <label for="description">Description:</label>
+                    <input type="text" name="desc" id="description">
+                </div>
+                <input type="submit" data-inline="true" value="Submit">
+            </form>
+        </div>
+    </div>
+
+    <!-- add roadblock page -->
+    <div class="wrapper" data-role="page" id="roadblock-page">
+        <div class="header" data-role="header" data-theme="b">
+            <span class="open left"><a href="#index">&#8678;</a></span>
+            <span class="title">Add Roadblock</span>
+        </div>
+        <div data-role="main" class="ui-content">
+            <!--
+            <script type="text/javascript">
+    var map;
+    document.addEventListener("deviceready", function() {
+      var div = document.getElementById("map_canvas");
+
+      // Initialize the map view
+      map = plugin.google.maps.Map.getMap(div);
+
+      // Wait until the map is ready status.
+      map.addEventListener(plugin.google.maps.event.MAP_READY, onMapReady);
+    }, false);
+
+    function onMapReady() {
+      var button = document.getElementById("button");
+      button.addEventListener("click", onBtnClicked, false);
+    }
+
+    function onBtnClicked() {
+      map.showDialog();
+    }
+    </script>
+    -->
+        </div>
+        <div class="footer" data-role="footer" data-theme="b" data-position="fixed" data-id="store">
+            <a href="#roadblock-info-page" data-role="button" data-icon="shop">Next</a>
+        </div>
+    </div>
+
+    <!-- roadblock description page -->
+    <div class="wrapper" data-role="page" id="roadblock-info-page">
+        <div class="header" data-role="header" data-theme="b">
+            <span class="title">Add Roadblock</span>
+        </div>
+        <div data-role="main" class="ui-content">
+            <form method="post" action="#index">
+                <div class="ui-field-contain">
+                    <label for="rname">Name of Roadblock:</label>
+                    <input type="text" name="rname" id="rname">
+                    <label for="description">Description:</label>
+                    <input type="text" name="desc" id="description">
+                </div>
+                <input type="submit" data-inline="true" value="Submit">
+            </form>
+        </div>
+    </div>
+
+
     </body>
 </html>
