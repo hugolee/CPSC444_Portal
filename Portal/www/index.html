@@ -32,18 +32,67 @@
         <meta name="format-detection" content="telephone=no">
         <meta name="msapplication-tap-highlight" content="no">
         <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+        <link rel="stylesheet" href="css/jquery.mobile-1.4.5.css"/>
+        <link rel="stylesheet" href="css/style.css"/>
+        <link rel="stylesheet" href="css/style.mobile.css"/>
         <link rel="stylesheet" type="text/css" href="css/index.css">
-        <title>Hello World</title>
-    </head>
-    <body>
-        <div class="app">
-            <h1>Apache Cordova</h1>
-            <div id="deviceready" class="blink">
-                <p class="event listening">Connecting to Device</p>
-                <p class="event received">Device is Ready</p>
-            </div>
-        </div>
+        <title>Portal</title>
+        <script src="js/jquery.js"></script>
+        <script src="js/jquery.mobile.js"></script>
         <script type="text/javascript" src="cordova.js"></script>
         <script type="text/javascript" src="js/index.js"></script>
+    </head>
+    <body>
+    <div class="wrapper" data-role="page" id="index">
+        <div class="panel left" data-role="panel" data-position="left" data-display="overlay" id="panel-01">
+            <ul>
+                <li class="home"><a href="#" title="Home">Home</a></li>
+                <li class="profile"><a href="#shortcut-page" title="Profile">Add Shortcut</a></li>
+                <li class="tasks"><a href="tasks.html" title="Tasks" data-ajax="false">Tasks</a></li>
+                <li class="login" id="l-in"><a href="login.html" title="Login">Log-in or Set-up</a></li>
+                <li class="logout" id="l-out"  style="display:none" ><a href="logout.html" title="Logout">Log-out</a></li>
+            </ul>
+        </div>
+        <div class="header" data-role="header" data-theme="b">
+            <span class="open left"><a href="#panel-01">&#9776;</a></span>
+            <span class="title"></span>
+        </div>
+        <div data-role="main" class="ui-content">
+        </div>
+    </div>
+
+    <!-- add shortcut page -->
+    <div class="wrapper" data-role="page" id="shortcut-page">
+        <div class="header" data-role="header" data-theme="b">
+            <span class="open left"><a href="#index">&#8678;</a></span>
+            <span class="title">Add Shortcut</span>
+        </div>
+        <div data-role="main" class="ui-content">
+            <script type="text/javascript">
+    var map;
+    document.addEventListener("deviceready", function() {
+      var div = document.getElementById("map_canvas");
+
+      // Initialize the map view
+      map = plugin.google.maps.Map.getMap(div);
+
+      // Wait until the map is ready status.
+      map.addEventListener(plugin.google.maps.event.MAP_READY, onMapReady);
+    }, false);
+
+    function onMapReady() {
+      var button = document.getElementById("button");
+      button.addEventListener("click", onBtnClicked, false);
+    }
+
+    function onBtnClicked() {
+      map.showDialog();
+    }
+    </script>
+        </div>
+        <div class="footer" data-role="footer" data-theme="b" data-position="fixed" data-id="store">
+            <a href="#store" data-role="button" data-icon="shop">Accessory Store</a>
+        </div>
+    </div>
     </body>
 </html>
