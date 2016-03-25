@@ -103,3 +103,10 @@ background-color:#fffacd!important;
 .bi-invisible {
 display:none;
 }
+
+.map {
+    position: absolute;
+    top: 9%;
+    left: 0%;
+    max-width: 100%;
+}
